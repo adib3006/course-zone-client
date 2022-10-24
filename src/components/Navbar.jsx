@@ -13,10 +13,10 @@ const Navbar = () => {
                         title='courseZone'
                     >
                         <span className='ml-2 text-xl font-bold tracking-wide text-gray-800'>
-                            <span className='text-sky-500'>Course</span> Zone
+                            <span className='text-sky-900'>Course</span> Zone
                         </span>
                     </Link>
-                    <ul className='flex items-center hidden space-x-8 lg:flex'>
+                    <ul className='items-center hidden space-x-8 lg:flex'>
                         <li>
                             <NavLink
                                 to='/courses'

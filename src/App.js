@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/route';
@@ -6,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <RouterProvider router={router}></RouterProvider>
       <Toaster/>
     </div>
