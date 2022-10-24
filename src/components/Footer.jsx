@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PrivateRoute = () => {
+const Footer = () => {
     return (
         <div>
-            
+            <p>This is footer</p>
         </div>
     );
 };
 
-export default PrivateRoute;
+export default Footer;
