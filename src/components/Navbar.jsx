@@ -148,7 +148,7 @@ const Navbar = () => {
                                             </li>
                                             <li>
                                                 <div className='w-full flex justify-center'>
-                                                    <img className='w-10 rounded-full' src="https://placeimg.com/80/80/people" alt='' />
+                                                    <img className='w-8 rounded-full' src="https://placeimg.com/80/80/people" alt='' />
                                                 </div>
                                                 <NavLink
                                                     to='/login'
