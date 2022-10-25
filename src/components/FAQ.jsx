@@ -1,8 +1,9 @@
 import React from 'react';
 
 const FAQ = () => {
+
     return (
-        <div className='p-5 w-2/3 mx-auto'>
+        <div className='p-5 w-2/3 mx-auto text-gray-800'>
             <div className='p-5 border shadow rounded mb-5'>
                 <h1 className='text-3xl font-semibold pb-3'>What are we?</h1>
                 <p className='text-xl'>We are a group of courious people who are keen to learn and spread our knowledge.</p>

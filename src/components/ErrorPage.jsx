@@ -4,7 +4,7 @@ import { useRouteError, Link } from 'react-router-dom';
 const ErrorPage = () => {
     const error = useRouteError();
     return (
-        <div className='pt-40 text-center'>
+        <div className='pt-40 text-center text-gray-800'>
             <h1 className='text-8xl'>{error.status}</h1>
             <p className='text-4xl'>{error.statusText}</p>
             <p className='text-4xl'>Go to <Link className='text-sky-700' to='/home'>Home</Link></p>

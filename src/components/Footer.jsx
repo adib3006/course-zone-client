@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from './../contexts/UserContext';
+import { toast } from 'react-hot-toast';
 
 const Footer = () => {
-    const handleSubmit = (e) => {
-        e.preventDefaults();
-
+    const {isDark} = useContext(AuthContext)
+    const handleSubmitFeedback = (e) => {
+        e.preventDefault();
+        toast.success('Thanks for your feedback');
+        e.target.reset();
     }
     return (
-        <div className='bg-gray-100 text-center py-5'>
+        <div className={`${isDark ? 'bg-gray-100 text-center py-5':'bg-slate-400 text-center py-5'}`}>
             <div>
                 <form
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmitFeedback}
                     noValidate=''
                     action=''
                     className='space-y-6 ng-untouched ng-pristine ng-valid mb-2'>
@@ -32,7 +36,7 @@ const Footer = () => {
                     </div>
                 </form>
             </div>
-            <p>© Course Zone</p>
+            <p className='text-gray-800'>© Course Zone</p>
         </div>
     );
 };

@@ -24,7 +24,7 @@ const Login = () => {
             setError('');
             form.reset();
         })
-        .catch((error)=>{setError(error)})
+        .catch((error)=>{setError(error.message)})
     }
 
     const handleGoogleSignIn = () => {
@@ -33,7 +33,7 @@ const Login = () => {
             navigate(from , {replace: true});
             setError('');
         })
-        .catch((error)=>{setError(error)})
+        .catch((error)=>{setError(error.message)})
     }
 
     const handleGithubSignIn = () => {
@@ -42,7 +42,7 @@ const Login = () => {
             navigate(from , {replace: true});
             setError('');
         })
-        .catch((error)=>{setError(error)})
+        .catch((error)=>{setError(error.message)})
     }
     
     const handleFacebookSignIn = () => {
@@ -51,7 +51,7 @@ const Login = () => {
             navigate(from , {replace: true});
             setError('');
         })
-        .catch((error)=>{setError(error)})
+        .catch((error)=>{setError(error.message)})
     }
 
     const handlePasswordReset = () => {
@@ -109,7 +109,7 @@ const Login = () => {
                         </div>
                     </div>
                     {
-                        error && <p>{error}</p>
+                        error && <p className='text-red-500'>{error}</p>
                     }
                     <div>
                         <button

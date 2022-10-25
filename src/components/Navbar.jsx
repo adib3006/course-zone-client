@@ -4,8 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from './../contexts/UserContext';
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
-    const [dark, setDark] = useState(false);
+    const { user, logOut, isDark, setIsDark } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const handleLogout = () => {
         logOut()
@@ -15,7 +14,7 @@ const Navbar = () => {
             .catch((error) => { console.error(error) })
     }
     return (
-        <div className='bg-gray-100'>
+        <div className={`${isDark ? 'bg-gray-100':'bg-slate-400'}`}>
             <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
                 <div className='relative flex items-center justify-between'>
                     <Link
@@ -33,10 +32,10 @@ const Navbar = () => {
                     <ul className='items-center hidden space-x-8 lg:flex'>
                         <li>
                             {
-                                dark ?
-                                    <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/PQG2VFr/dark.png" alt="" />
+                                isDark ?
+                                    <img className='w-8' onClick={() => { setIsDark(!isDark) }} src="https://i.ibb.co/PQG2VFr/dark.png" alt="" />
                                     :
-                                    <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/0ssLfYt/light.png" alt="" />
+                                    <img className='w-8' onClick={() => { setIsDark(!isDark) }} src="https://i.ibb.co/0ssLfYt/light.png" alt="" />
                             }
                         </li>
                         <li>
@@ -152,10 +151,10 @@ const Navbar = () => {
                                         <ul className='space-y-4'>
                                             <li>
                                                 {
-                                                    dark ?
-                                                        <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/PQG2VFr/dark.png" alt="" />
+                                                    isDark ?
+                                                        <img className='w-8' onClick={() => { setIsDark(!isDark) }} src="https://i.ibb.co/PQG2VFr/dark.png" alt="" />
                                                         :
-                                                        <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/0ssLfYt/light.png" alt="" />
+                                                        <img className='w-8' onClick={() => { setIsDark(!isDark) }} src="https://i.ibb.co/0ssLfYt/light.png" alt="" />
                                                 }
                                             </li>
                                             <li>
