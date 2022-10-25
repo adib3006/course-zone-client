@@ -9,7 +9,7 @@ const Courses = () => {
     const coursesData = useLoaderData();
     console.log(coursesData);
     return (
-        <div className='flex'>
+        <div className='flex p-10'>
             <CourseContext.Provider value={coursesData}>
                 <div className='w-1/4'><CoursesLeftSideBar></CoursesLeftSideBar></div>
                 <div className='w-3/4'><CoursesSection></CoursesSection></div>
