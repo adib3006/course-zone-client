@@ -1,3 +1,4 @@
+import CourseDetails from "../components/CourseDetails";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/courses',
-                loader: ()=>fetch('http://localhost:5000/courses'),
+                loader: ()=>fetch('https://course-zone-server.vercel.app/courses'),
                 element:<Courses></Courses>
             },
             {
@@ -47,8 +48,12 @@ export const router = createBrowserRouter([
                 element:<Blog></Blog>
             },
             {
+                path:'/course-details',
+                element:<CourseDetails></CourseDetails>
+            },
+            {
                 path:'/course/:id',
-                loader: ({params})=>fetch(`http://localhost:5000/course/${params.id}`),
+                loader: ({params})=>fetch(`https://course-zone-server.vercel.app/course/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             }
         ]

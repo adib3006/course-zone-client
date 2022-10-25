@@ -9,10 +9,10 @@ const Courses = () => {
     const coursesData = useLoaderData();
     console.log(coursesData);
     return (
-        <div className='flex p-10'>
+        <div className='lg:flex p-10'>
             <CourseContext.Provider value={coursesData}>
-                <div className='w-1/4'><CoursesLeftSideBar></CoursesLeftSideBar></div>
-                <div className='w-3/4'><CoursesSection></CoursesSection></div>
+                <div className='w-100 lg:w-1/4'><CoursesLeftSideBar></CoursesLeftSideBar></div>
+                <div className='w-100 lg:w-3/4'><CoursesSection></CoursesSection></div>
             </CourseContext.Provider>
         </div>
     );

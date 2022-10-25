@@ -5,6 +5,7 @@ import { AuthContext } from './../contexts/UserContext';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [dark, setDark] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const handleLogout = () => {
         logOut()
@@ -22,11 +23,22 @@ const Navbar = () => {
                         aria-label='courseZone'
                         title='courseZone'
                     >
-                        <span className='ml-2 text-xl font-bold tracking-wide text-gray-800'>
-                            <span className='text-sky-900'>Course</span> Zone
-                        </span>
+                        <div className='flex items-center'>
+                            <img className='w-10' src="https://i.ibb.co/Tc4z6Hg/logo48.png" alt="" />
+                            <span className='ml-2 text-xl font-bold tracking-wide text-gray-800'>
+                                <span className='text-sky-900'>Course</span> Zone
+                            </span>
+                        </div>
                     </Link>
                     <ul className='items-center hidden space-x-8 lg:flex'>
+                        <li>
+                            {
+                                dark ?
+                                    <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/PQG2VFr/dark.png" alt="" />
+                                    :
+                                    <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/0ssLfYt/light.png" alt="" />
+                            }
+                        </li>
                         <li>
                             <NavLink
                                 to='/courses'
@@ -109,9 +121,12 @@ const Navbar = () => {
                                                 aria-label='courseZone'
                                                 title='courseZone'
                                             >
-                                                <span className='ml-2 text-xl font-bold tracking-wide text-gray-800'>
-                                                    <span className='text-sky-500'>Quiz</span> Ninja
-                                                </span>
+                                                <div className='flex items-center'>
+                                                    <img className='w-10' src="https://i.ibb.co/Tc4z6Hg/logo48.png" alt="" />
+                                                    <span className='ml-2 text-xl font-bold tracking-wide text-gray-800'>
+                                                        <span className='text-sky-900'>Course</span> Zone
+                                                    </span>
+                                                </div>
                                             </Link>
                                         </div>
                                         <div>
@@ -131,7 +146,18 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     <nav>
+                                        {
+
+                                        }
                                         <ul className='space-y-4'>
+                                            <li>
+                                                {
+                                                    dark ?
+                                                        <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/PQG2VFr/dark.png" alt="" />
+                                                        :
+                                                        <img className='w-8' onClick={() => { setDark(!dark) }} src="https://i.ibb.co/0ssLfYt/light.png" alt="" />
+                                                }
+                                            </li>
                                             <li>
                                                 <NavLink
                                                     to='/courses'
@@ -164,12 +190,11 @@ const Navbar = () => {
                                             </li>
                                             <li>
                                                 {user?.uid ?
-                                                    <><div className='flex flex-col justify-center items-center'>
+                                                    <><div className='flex flex-col justify-center'>
                                                         <div className="w-10 rounded">
-                                                            {user.photoURL ? <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' />:<img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src='https://i.ibb.co/YWzBXhs/user.png' alt='' />}
-                                                        <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' />
+                                                            {user.photoURL ? <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' /> : <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src='https://i.ibb.co/YWzBXhs/user.png' alt='' />}
                                                         </div>
-                                                        <button onClick={handleLogout} className='mx-2 px-2 border rounded text-gray-700'>Log Out</button>
+                                                        <button onClick={handleLogout} className='mt-2 px-2 border rounded text-gray-700 w-20'>Log Out</button>
                                                     </div></>
                                                     :
                                                     <NavLink

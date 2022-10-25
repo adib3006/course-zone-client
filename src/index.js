@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserContext from './contexts/UserContext';
+import CourseDetailContext from './contexts/CourseDetailContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserContext>
-      <App />
+      <CourseDetailContext>
+        <App />
+      </CourseDetailContext>
     </UserContext>
   </React.StrictMode>
 );

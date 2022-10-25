@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from './../contexts/UserContext';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-    const {signIn,googleSignIn,githubSignIn,facebookSignIn} = useContext(AuthContext);
+    const {signIn,googleSignIn,githubSignIn,facebookSignIn,passwordReset} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [error, setError] = useState('');
+    const [userEmail, setUserEmail] = useState('');
 
     const from = location.state?.from?.pathname || '/';
 
@@ -18,32 +21,45 @@ const Login = () => {
         signIn(email,password)
         .then((result)=>{
             navigate(from , {replace: true});
+            setError('');
+            form.reset();
         })
-        .catch((error)=>{console.error(error)})
+        .catch((error)=>{setError(error)})
     }
 
     const handleGoogleSignIn = () => {
         googleSignIn()
         .then((result)=>{
             navigate(from , {replace: true});
+            setError('');
         })
-        .catch((error)=>{console.error(error)})
+        .catch((error)=>{setError(error)})
     }
 
     const handleGithubSignIn = () => {
         githubSignIn()
         .then((result)=>{
             navigate(from , {replace: true});
+            setError('');
         })
-        .catch((error)=>{console.error(error)})
+        .catch((error)=>{setError(error)})
     }
     
     const handleFacebookSignIn = () => {
         facebookSignIn()
         .then((result)=>{
             navigate(from , {replace: true});
+            setError('');
         })
-        .catch((error)=>{console.error(error)})
+        .catch((error)=>{setError(error)})
+    }
+
+    const handlePasswordReset = () => {
+        passwordReset(userEmail)
+        .then((result)=>{
+            toast.info('Reset Password link sent to your email')
+          })
+          .catch((error) => console.error(error))
     }
 
     return (
@@ -67,6 +83,7 @@ const Login = () => {
                                 Email address
                             </label>
                             <input
+                                onBlur={(e)=>{setUserEmail(e.target.value)}}
                                 type='email'
                                 name='email'
                                 id='email'
@@ -91,7 +108,9 @@ const Login = () => {
                             />
                         </div>
                     </div>
-
+                    {
+                        error && <p>{error}</p>
+                    }
                     <div>
                         <button
                             type='submit'
@@ -102,7 +121,7 @@ const Login = () => {
                     </div>
                 </form>
                 <div className='space-y-1'>
-                    <button className='text-xs hover:underline text-gray-400'>
+                    <button onClick={handlePasswordReset} className='text-xs hover:underline text-gray-400'>
                         Forgot password?
                     </button>
                 </div>

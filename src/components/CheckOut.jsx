@@ -4,11 +4,9 @@ import { useLoaderData } from 'react-router-dom';
 const CheckOut = () => {
     const course = useLoaderData();
     return (
-        <div>
-            <h1>This is checkout</h1>
-            <p>{course.name}</p>
-            <p>{course.title}</p>
-            <p>{course.description}</p>
+        <div className='h-screen text-center'>
+            <h1 className='text-4xl'>Thanks for Checking out</h1>
+            <p className='text-8xl'>Course Name : {course.name}</p>
         </div>
     );
 };
