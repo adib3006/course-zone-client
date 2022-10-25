@@ -1,3 +1,5 @@
+import PrivateRoute from "./PrivateRoute";
+
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Blog } = require("../components/Blog");
 const { default: CheckOut } = require("../components/CheckOut");
@@ -47,7 +49,7 @@ export const router = createBrowserRouter([
             {
                 path:'/course/:id',
                 loader: ({params})=>fetch(`http://localhost:5000/course/${params.id}`),
-                element: <CheckOut></CheckOut>
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             }
         ]
     }
