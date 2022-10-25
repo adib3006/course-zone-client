@@ -6,9 +6,9 @@ const CoursesLeftSideBar = () => {
     const data = useContext(CourseContext);
     return (
         <div>
-            <h3>Course Names</h3>
+            <h3 className='text-2xl underline'>Course Names</h3>
             <ul>
-                {data.map(d=><li><Link key={d.id} to={`/course/${d.id}`}>{d.name}</Link></li>)}
+                {data.map(d=><li className='py-2 text-gray-700 hover:text-gray-900'><Link key={d.id} to={`/course/${d.id}`}>{d.name}</Link></li>)}
             </ul>
         </div>
     );
