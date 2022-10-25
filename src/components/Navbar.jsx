@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from './../contexts/UserContext';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                toast.success('user logged out');
+            })
+            .catch((error) => { console.error(error) })
+    }
     return (
         <div className='bg-gray-100'>
             <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -48,17 +58,23 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className='flex'>
-                            <div className="w-10 rounded">
-                                <img className='rounded-full' src="https://placeimg.com/80/80/people" alt='' />
-                            </div>
-                            <NavLink
-                                to='/login'
-                                aria-label='login'
-                                title='login'
-                                className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
-                            >
-                                Login
-                            </NavLink>
+                            {user?.uid ?
+                                <><div className='flex'>
+                                    <div className="w-10 rounded">
+                                        <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' />
+                                    </div>
+                                    <button onClick={handleLogout} className='mx-2 px-2 border rounded bg-slate-300 text-gray-900 hover:bg-slate-500'>Log Out</button>
+                                </div></>
+                                :
+                                <NavLink
+                                    to='/login'
+                                    aria-label='login'
+                                    title='login'
+                                    className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
+                                >
+                                    Login
+                                </NavLink>
+                            }
                         </li>
                     </ul>
                     <div className='lg:hidden'>
@@ -147,17 +163,23 @@ const Navbar = () => {
                                                 </NavLink>
                                             </li>
                                             <li>
-                                                <div className='w-full flex justify-center'>
-                                                    <img className='w-8 rounded-full' src="https://placeimg.com/80/80/people" alt='' />
-                                                </div>
-                                                <NavLink
-                                                    to='/login'
-                                                    aria-label='login'
-                                                    title='login'
-                                                    className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
-                                                >
-                                                    Login
-                                                </NavLink>
+                                                {user?.uid ?
+                                                    <><div className='flex flex-col justify-center items-center'>
+                                                        <div className="w-10 rounded">
+                                                        <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' />
+                                                        </div>
+                                                        <button onClick={handleLogout} className='mx-2 px-2 border rounded text-gray-700'>Log Out</button>
+                                                    </div></>
+                                                    :
+                                                    <NavLink
+                                                        to='/login'
+                                                        aria-label='login'
+                                                        title='login'
+                                                        className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
+                                                    >
+                                                        Login
+                                                    </NavLink>
+                                                }
                                             </li>
                                         </ul>
                                     </nav>

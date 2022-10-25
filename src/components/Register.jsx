@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from './../contexts/UserContext';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
+    const {createUser,updateUserInfo} = useContext(AuthContext);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name,photoURL,email,password);
+        createUser(email,password)
+        .then((result)=>{
+            console.log(result.user);
+            updateUserInfo(name,photoURL)
+            .then(()=>{
+                toast.success('profile updated');
+            })
+            .catch((error)=>{console.error(error)})
+        })
+        .catch((error)=>{console.error(error)})
+    }
+
     return (
         <div className='flex justify-center items-center pt-8'>
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -10,6 +34,7 @@ const Register = () => {
                     <p className='text-sm text-gray-400'>Create a new account</p>
                 </div>
                 <form
+                    onSubmit={handleSubmit}
                     noValidate=''
                     action=''
                     className='space-y-12 ng-untouched ng-pristine ng-valid'
