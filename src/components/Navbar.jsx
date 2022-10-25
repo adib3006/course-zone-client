@@ -166,6 +166,7 @@ const Navbar = () => {
                                                 {user?.uid ?
                                                     <><div className='flex flex-col justify-center items-center'>
                                                         <div className="w-10 rounded">
+                                                            {user.photoURL ? <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' />:<img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src='https://i.ibb.co/YWzBXhs/user.png' alt='' />}
                                                         <img data-bs-toggle="tooltip" title={user.displayName} className='rounded-full' src={user.photoURL} alt='' />
                                                         </div>
                                                         <button onClick={handleLogout} className='mx-2 px-2 border rounded text-gray-700'>Log Out</button>
