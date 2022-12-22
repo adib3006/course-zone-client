@@ -5,8 +5,8 @@ const CheckOut = () => {
     const course = useLoaderData();
     return (
         <div className='py-24 text-center text-gray-800'>
-            <h1 className='text-4xl'>Thanks for Checking out</h1>
-            <p className='text-8xl'>Course Name : {course.name}</p>
+            <h1 className='text-2xl md:text-4xl'>Thanks for Checking out</h1>
+            <p className='text-4xl md:text-8xl'>Course Name : {course.name}</p>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import CourseDetails from "../components/CourseDetails";
+import Team from "../components/Team";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path:'/blog',
                 element:<Blog></Blog>
+            },
+            {
+                path:'/team',
+                element:<Team></Team>
             },
             {
                 path:'/course-details',

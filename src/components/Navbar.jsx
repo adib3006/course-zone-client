@@ -14,7 +14,7 @@ const Navbar = () => {
             .catch((error) => { console.error(error) })
     }
     return (
-        <div className={`${isDark ? 'bg-gray-100':'bg-slate-400'}`}>
+        <div className={`${isDark ? 'bg-gray-100' : 'bg-slate-400'}`}>
             <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
                 <div className='relative flex items-center justify-between'>
                     <Link
@@ -66,6 +66,16 @@ const Navbar = () => {
                                 className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
                             >
                                 Blog
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to='/team'
+                                aria-label='team'
+                                title='team'
+                                className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
+                            >
+                                Team
                             </NavLink>
                         </li>
                         <li className='flex'>
@@ -185,6 +195,16 @@ const Navbar = () => {
                                                     className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
                                                 >
                                                     Blog
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    to='/team'
+                                                    aria-label='team'
+                                                    title='team'
+                                                    className={({ isActive }) => isActive ? 'font-medium tracking-wide text-sky-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
+                                                >
+                                                    Team
                                                 </NavLink>
                                             </li>
                                             <li>

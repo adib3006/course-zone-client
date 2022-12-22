@@ -24,7 +24,9 @@ const Login = () => {
             setError('');
             form.reset();
         })
-        .catch((error)=>{setError(error.message)})
+        .catch((error)=>{
+            setError('Credentials did not match');
+        })
     }
 
     const handleGoogleSignIn = () => {
